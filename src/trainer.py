@@ -122,7 +122,11 @@ class Trainer(object):
             log_results(test_results_subj)
 
             return test_results_overall
-
+        
+        ent_embeddings, rel_embeddings = self.get_embeddings()
+        np.save("ent_embeddings", ent_embeddings)
+        np.save("rel_embeddings", rel_embeddings)
+        
         return best_valid
 
     def test(self, experiment: Experiment, checkpoint_file):
