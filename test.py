@@ -1,4 +1,5 @@
 import argparse
+import pickle
 
 from src.utils import Parameters
 from src.experiment import Experiment
@@ -40,6 +41,10 @@ def main():
 
     experiment = Experiment()
     experiment.construct_experiment(dataset_path, joint=True, typed_corrs=True)
+    
+    #Get entity and relation dictionaries out of experiment object
+    pickle.dump(experiment.entities_dict, open( "entiries_dict.p", "wb" ))
+    pickle.dump(experiment.relations_dict, open( "relations_dict.p", "wb"))
 
     # ---- testing for vanilla models ---- #
 
